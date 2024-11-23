@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>{{ Лабораторна робота №8 }}</title>
+ <style>
+ .group {
+ font-style: italic;
+ color: blue;
+ }
+ table {
+ width: 100%;
+ border-collapse: collapse;
+ margin-bottom: 20px;
+ }
+ th, td {
+ border: 1px solid black;
+ padding: 8px;
+ text-align: left;
+ }
+ th {
+ font-weight: bold;
+ }
+ </style>
+</head>
+<body>
+ <h1>{{ project_name }}</h1>
+ <p><strong>Студент:</strong> {{ Куксов Данило Олегович }}</p>
+ <p class="group"><strong>Група:</strong> {{ КБ21015Б  }}</p>
+ 
+ <h2>Таблиця Кінотеатри</h2>
+ <table>
+ <tr>
+ <th>Назва</th>
+ <th>Ціна квитка</th>
+ <th>Місця</th>
+ <th>Адреса</th>
+ <th>Телефон</th>
+ </tr>
+ {% for cinema in cinemas %}
+ <tr>
+ <td>{{ cinema.name }}</td>
+ <td>{{ cinema.ticket_price }}</td>
+ <td>{{ cinema.seats }}</td>
+ <td>{{ cinema.address }}</td>
+ <td>{{ cinema.phone }}</td>
+ </tr>
+ {% endfor %}
+ </table>
+
+ <h2>Таблиця Фільми</h2>
+ <table>
+ <tr>
+ <th>Назва</th>
+ <th>Жанр</th>
+ <th>Тривалість (хв)</th>
+ </tr>
+ {% for movie in movies %}
+ <tr>
+ <td>{{ movie.title }}</td>
+ <td>{{ movie.genre }}</td>
+ <td>{{ movie.duration }}</td>
+ </tr>
+ {% endfor %}
+ </table>
+
+ <h2>Таблиця Покази</h2>
+ <table>
+ <tr>
+ <th>Назва фільму</th>
+ <th>Кінотеатр</th>
+ <th>Дата початку</th>
+ <th>Дні показу</th>
+ <th>Дата завершення</th>
+ </tr>
+ {% for screening in screenings %}
+ <tr>
+ <td>{{ screening.movie.title }}</td>
+ <td>{{ screening.cinema.name }}</td>
+ <td>{{ screening.start_date }}</td>
+ <td>{{ screening.show_days }}</td>
+ <td>{{ screening.end_date }}</td>
+ </tr>
+ {% endfor %}
+ </table>
+</body>
+</html>
